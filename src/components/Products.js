@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 
 export default function Products() {
-    const {products, isProductsLoading} = useSelector(({products,isProductsLoading}) => products);
+    const {products, isProductsLoading} = useSelector(({products: {products, isProductsLoading}}) => ({products, isProductsLoading}));
     const dispatch = useDispatch();
 
     const fetchProduct = async () => {
@@ -30,8 +30,8 @@ export default function Products() {
     }
 
     return (<div>
-            {products.map(product=>(
-                <div>
+            {products && products.map(product=>(
+                <div key={product.id}>
                     <h4>{product.title}</h4>
                     <p>{product.description}</p>
                     <img src={product.image} alt='imageShop'/>

@@ -24,6 +24,7 @@ export const productsReducer = (state = initialState, action) => {
 
         case RESET_PRODUCTS_LOADING :{
             return {
+                ...state,
                 isProductsLoading: false
             }
         }
